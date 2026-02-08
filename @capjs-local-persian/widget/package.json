@@ -1,0 +1,31 @@
+{
+  "name": "@capjs-local-persian/widget",
+  "version": "0.1.34",
+  "description": "Client-side widget for Cap, a lightweight, modern open-source CAPTCHA alternative designed using SHA-256 PoW.",
+  "keywords": [
+   "captcha",
+    "captcha-alternative",
+    "security",
+    "anti-bot",
+    "proof-of-work",
+    "pow",
+    "wasm",
+    "no-cdn",
+    "offline",
+    "iran",
+    "restricted-networks"
+  ],
+  "homepage": "https://github.com/mohammadim48/capjs-local-persian",
+  "bugs": {
+    "url": "https://github.com/mohammadim48/capjs-local-persian/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadim48/capjs-local-persian"
+  },
+  "license": "Apache-2.0",
+  "author": "Fork maintained by Mohammadim48 (original author: Tiago)",
+  "type": "commonjs",
+  "main": "cap.min.js",
+  "types": "cap.d.ts"
+}
