@@ -1,9 +1,9 @@
 {
   "name": "capjs-local-persian-pro",
-  "version": "0.1.38",
+  "version": "1.0.0",
   "description": "Client-side for Cap, a lightweight, modern open-source CAPTCHA alternative designed using SHA-256 PoW.",
   "keywords": [
-   "captcha",
+    "captcha",
     "captcha-alternative",
     "security",
     "anti-bot",
