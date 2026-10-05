@@ -1,6 +1,6 @@
 {
-  "name": "capjs-local-persian-pro",
-  "version": "1.0.0",
+  "name": "capjs-local-persian",
+  "version": "0.1.38",
   "description": "Client-side for Cap, a lightweight, modern open-source CAPTCHA alternative designed using SHA-256 PoW.",
   "keywords": [
     "captcha",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mohammadim48/capjs-local-persian"
+    "url": "git+https://github.com/mohammadim48/capjs-local-persian.git"
   },
   "license": "Apache-2.0",
   "author": "Fork maintained by Mohammadim48 (original author: Tiago)",
