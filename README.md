@@ -2,58 +2,58 @@
 
 # Cap Local Persian Pro
 
-**کپچای فارسی برای وب مدرن؛ با میزبانی محلی و بدون نیاز به CDN در نسخهٔ اصلی.**
+**A Persian CAPTCHA widget for the modern web, with locally hosted assets.**
 
 [![npm version](https://img.shields.io/npm/v/capjs-local-persian-pro?style=flat-square&color=2563eb)](https://www.npmjs.com/package/capjs-local-persian-pro)
 [![License](https://img.shields.io/badge/license-Apache--2.0-16a34a?style=flat-square)](./LICENSE)
 [![JavaScript](https://img.shields.io/badge/JavaScript-Web%20Component-f7df1e?style=flat-square)](https://github.com/mohammadim48/capjs-local-persian)
 
-رابط فارسی و RTL · SHA-256 Proof of Work · WebAssembly · Web Workers
+Persian UI & RTL · SHA-256 Proof of Work · WebAssembly · Web Workers
 
-[npm](https://www.npmjs.com/package/capjs-local-persian-pro) · [GitHub](https://github.com/mohammadim48/capjs-local-persian) · [گزارش مشکل](https://github.com/mohammadim48/capjs-local-persian/issues)
+[npm](https://www.npmjs.com/package/capjs-local-persian-pro) · [GitHub](https://github.com/mohammadim48/capjs-local-persian) · [Report an issue](https://github.com/mohammadim48/capjs-local-persian/issues)
 
 </div>
 
 ---
 
-## معرفی
+## Overview
 
-`capjs-local-persian-pro` یک فورک از ویجت [Cap](https://github.com/tiagozip/cap) است که برای رابط‌های فارسی و استقرار محلی آماده شده است. به‌جای معمای تصویری، مرورگر یک چالش محاسباتی مبتنی بر SHA-256 را حل می‌کند و پاسخ را برای دریافت توکن به سرور می‌فرستد.
+`capjs-local-persian-pro` is a fork of the [Cap](https://github.com/tiagozip/cap) client widget, adapted for Persian interfaces and local asset hosting. Instead of an image puzzle, the browser solves a SHA-256 proof-of-work challenge and submits the solution to your server to obtain a verification token.
 
-نسخهٔ اصلی، فایل‌های JavaScript و WebAssembly موردنیاز حل چالش را از مسیر محلی پکیج بارگذاری می‌کند؛ بنابراین می‌توانید دارایی‌های کلاینت را روی زیرساخت خودتان میزبانی کنید. این ویژگی برای شبکه‌هایی با دسترسی محدود به CDN مفید است.
+The main build loads its JavaScript and WebAssembly solver assets from the package's local directory. You can serve these files from your own infrastructure without a runtime CDN dependency—useful for deployments with restricted access to external asset providers.
 
-> این پکیج **کلاینت کپچا** است. برای استفادهٔ واقعی، به API سازگار با Cap و اعتبارسنجی توکن در بک‌اند نیاز دارید. میزبانی محلی دارایی‌ها به معنی اجرای کپچا بدون ارتباط با سرور نیست.
+> This package provides the **CAPTCHA client**. A Cap-compatible API and server-side token validation are required for production use. Local asset hosting does not mean verification works without a server connection.
 
-## امکانات
+## Features
 
-- **رابط فارسی و راست‌به‌چپ:** متن فارسی برای حالت اولیه، بررسی و تأیید، به‌همراه چیدمان RTL در فایل اصلی.
-- **دارایی‌های محلی:** فایل‌های WASM همراه پکیج هستند و نسخهٔ اصلی برای بارگذاری آن‌ها به CDN نیاز ندارد.
-- **حل چالش در Web Workers:** محاسبات خارج از رشتهٔ اصلی رابط کاربری انجام می‌شود.
-- **شتاب‌دهی با WebAssembly:** همراه با حل‌کنندهٔ جایگزین مبتنی بر Web Crypto در فایل اصلی.
-- **Web Component:** قابل استفاده با تگ `<cap-widget>` در صفحات وب.
-- **اجرای برنامه‌ای:** دریافت توکن با `window.Cap`، بدون نمایش ویجت.
-- **قابل شخصی‌سازی:** متن‌ها، رنگ‌ها، فونت، اندازه‌ها و تعداد Workerها.
-- **رویدادهای کاربردی:** پیشرفت، موفقیت، خطا و بازنشانی؛ همراه با فایل تعریف نوع TypeScript.
+- **Persian interface and RTL layout:** Persian initial, verification, and success labels in the main build.
+- **Locally hosted assets:** Bundled WASM files, with relative asset URLs in the main build.
+- **Web Workers:** Challenge computation runs outside the main UI thread.
+- **WebAssembly acceleration:** The main build includes a Web Crypto fallback solver.
+- **Web Component integration:** Add a `<cap-widget>` element to your page.
+- **Programmatic verification:** Obtain a token through `window.Cap` without displaying the widget.
+- **Customizable appearance:** Configure labels, colors, fonts, dimensions, and worker count.
+- **Events and types:** Progress, success, error, and reset events, plus TypeScript declarations.
 
-## نصب
+## Installation
 
 ```bash
 npm install capjs-local-persian-pro
 ```
 
-یا با مدیر بستهٔ دلخواه:
+Or use your preferred package manager:
 
 ```bash
 pnpm add capjs-local-persian-pro
-# یا
+# or
 yarn add capjs-local-persian-pro
 ```
 
-## شروع سریع
+## Quick start
 
-### ۱. فایل‌ها را در پوشهٔ عمومی پروژه قرار دهید
+### 1. Copy the assets into your public directory
 
-برای پروژه‌هایی که پوشهٔ `public` را در ریشهٔ سایت سرو می‌کنند:
+For projects that serve a `public` directory at the site root:
 
 ```bash
 mkdir -p public/vendor/cap/wasm
@@ -62,7 +62,7 @@ cp node_modules/capjs-local-persian-pro/wasm/cap_wasm.min.js public/vendor/cap/w
 cp node_modules/capjs-local-persian-pro/wasm/cap_wasm_bg.wasm public/vendor/cap/wasm/
 ```
 
-ساختار نهایی:
+Keep this directory structure:
 
 ```text
 public/
@@ -74,9 +74,9 @@ public/
             └── cap_wasm_bg.wasm
 ```
 
-فایل اصلی مسیر WASM را نسبت به URL خودش پیدا می‌کند. با حفظ این ساختار، نیازی به تنظیم دستی مسیر ندارید. اگر برنامه زیر یک مسیر مانند `/app/` سرو می‌شود، URL اسکریپت را متناسب با همان مسیر تغییر دهید.
+The main build resolves the WASM assets relative to its own URL. Keeping this structure avoids manual asset configuration. If your application is served under a path such as `/app/`, adjust the script URL accordingly.
 
-### ۲. ویجت را به فرم اضافه کنید
+### 2. Add the widget to a form
 
 ```html
 <!doctype html>
@@ -84,7 +84,7 @@ public/
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>فرم تماس</title>
+    <title>Contact form</title>
   </head>
   <body>
     <form id="contact-form" action="/contact" method="post">
@@ -124,20 +124,20 @@ public/
 </html>
 ```
 
-ویجت یک فیلد مخفی با نام پیش‌فرض `cap-token` ایجاد می‌کند و بعد از حل چالش، توکن را داخل آن می‌گذارد. هنگام ارسال فرم، بک‌اند باید این توکن را اعتبارسنجی کند و فقط پس از موفقیت، درخواست را پردازش کند. غیرفعال‌کردن دکمه صرفاً رفتار رابط کاربری است.
+The widget creates a hidden input named `cap-token` by default and fills it with the verification token after solving the challenge. Your backend must validate this token before processing the submitted form. Disabling the button is a UI convenience; server-side validation enforces verification.
 
-> فایل `cap.min.js` از `import.meta.url` استفاده می‌کند؛ آن را به‌صورت ES module بارگذاری کنید. برای نسخهٔ فعلی، روش مستندشده کپی دارایی‌ها و بارگذاری در مرورگر است؛ ورودی پکیج با وجود `type: commonjs` یک فایل دارای نحو ماژول است و نباید اجرای مستقیم آن با `require()` را فرض کرد.
+> **Module loading:** `cap.min.js` uses `import.meta.url` and must be loaded as an ES module. For the current release, the documented integration is to copy the assets and load them in the browser. Although the package metadata declares `type: commonjs`, its main file contains module syntax; do not assume it can be loaded directly with `require()`.
 
-## API موردنیاز سرور
+## Server API requirements
 
-اگر `data-cap-api-endpoint` برابر `/api/cap/` باشد، ویجت درخواست‌های زیر را می‌فرستد:
+With `data-cap-api-endpoint="/api/cap/"`, the widget sends these requests:
 
-| مسیر | متد | کاربرد |
+| Endpoint | Method | Purpose |
 | --- | --- | --- |
-| `/api/cap/challenge` | `POST` | دریافت چالش و توکن چالش |
-| `/api/cap/redeem` | `POST` | ارسال پاسخ‌ها و دریافت توکن نهایی |
+| `/api/cap/challenge` | `POST` | Obtain a challenge and challenge token |
+| `/api/cap/redeem` | `POST` | Submit solutions and obtain a verification token |
 
-پاسخ چالش می‌تواند شامل آرایه‌ای از زوج‌های `[salt, target]` باشد:
+The challenge response can contain an array of `[salt, target]` pairs:
 
 ```json
 {
@@ -146,9 +146,9 @@ public/
 }
 ```
 
-ویجت قالب فشردهٔ `challenge` با فیلدهای `c`، `s` و `d` را هم پشتیبانی می‌کند. این داده‌ها باید توسط سرور سازگار تولید شوند؛ نمونهٔ بالا صرفاً ساختار پاسخ را نشان می‌دهد.
+The widget also supports the compact `challenge` format with `c`, `s`, and `d` fields. These values must be generated by a compatible server; the example above illustrates the response structure only.
 
-بدنهٔ درخواست redeem:
+Redeem request body:
 
 ```json
 {
@@ -157,7 +157,7 @@ public/
 }
 ```
 
-ساختار پاسخ موفق:
+Successful redeem response structure:
 
 ```json
 {
@@ -167,11 +167,15 @@ public/
 }
 ```
 
-`expires` باید یک تاریخ قابل‌تفسیر در JavaScript، در آینده و با فاصلهٔ کمتر از ۲۴ ساعت باشد. ویجت در زمان انقضا بازنشانی می‌شود. برای پیاده‌سازی سرویس و اعتبارسنجی توکن، به [پروژهٔ اصلی Cap](https://github.com/tiagozip/cap) مراجعه کنید. این پکیج سرور یا endpoint اعتبارسنجی درخواست نهایی را ارائه نمی‌کند.
+`expires` must be a date JavaScript can parse, in the future and less than 24 hours away. The widget resets when the token expires. See the [upstream Cap project](https://github.com/tiagozip/cap) for server implementation and token validation. This package does not provide the server or the endpoint that validates tokens for your protected application requests.
 
-## اجرای برنامه‌ای بدون نمایش ویجت
+## Programmatic verification
+
+Obtain a token without displaying the widget:
 
 ```html
+<button id="verify-button" type="button">Verify</button>
+
 <script type="module">
   import "/vendor/cap/cap.min.js";
 
@@ -182,31 +186,31 @@ public/
       const result = await cap.solve();
       if (!result?.success) return;
 
-      // توکن را همراه درخواست به بک‌اند بفرستید تا اعتبارسنجی شود.
+      // Send this token with your application request for backend validation.
       console.log(result.token);
     } catch (error) {
-      console.error("بررسی کپچا ناموفق بود:", error);
+      console.error("CAPTCHA verification failed:", error);
     }
   });
 </script>
 ```
 
-در این مثال باید دکمه‌ای با شناسهٔ `verify-button` در صفحه وجود داشته باشد. `window.Cap` یک ویجت مخفی ایجاد می‌کند و به همان API و دارایی‌های WASM نیاز دارد.
+`window.Cap` creates a hidden widget. It requires the same server API and WASM assets as the visible widget.
 
-## تنظیمات ویجت
+## Widget configuration
 
-| ویژگی | کاربرد | پیش‌فرض |
+| Attribute | Purpose | Default |
 | --- | --- | --- |
-| `data-cap-api-endpoint` | آدرس پایهٔ API کپچا | الزامی، مگر با `CAP_CUSTOM_FETCH` |
-| `data-cap-hidden-field-name` | نام فیلد مخفی توکن | `cap-token` |
-| `data-cap-worker-count` | تعداد Workerهای حل چالش | `navigator.hardwareConcurrency` یا `8` |
-| `data-cap-i18n-initial-state` | متن اولیه | `من ربات نیستم!` |
-| `data-cap-i18n-verifying-label` | متن هنگام بررسی | `در حال بررسی...` |
-| `data-cap-i18n-solved-label` | متن موفقیت | `تایید شد!` |
-| `data-cap-i18n-error-label` | متن خطا | `Error. Try again.` |
-| `data-cap-i18n-wasm-disabled` | متن راهنمای حل‌کنندهٔ جایگزین | پیام انگلیسی فعال‌سازی WASM |
+| `data-cap-api-endpoint` | Base URL of the CAPTCHA API | Required unless using `CAP_CUSTOM_FETCH` |
+| `data-cap-hidden-field-name` | Hidden token input name | `cap-token` |
+| `data-cap-worker-count` | Number of solver workers | `navigator.hardwareConcurrency` or `8` |
+| `data-cap-i18n-initial-state` | Initial label | `من ربات نیستم!` |
+| `data-cap-i18n-verifying-label` | Verification label | `در حال بررسی...` |
+| `data-cap-i18n-solved-label` | Success label | `تایید شد!` |
+| `data-cap-i18n-error-label` | Error label | `Error. Try again.` |
+| `data-cap-i18n-wasm-disabled` | Fallback solver hint | English message suggesting WASM activation |
 
-برای متن‌های دسترس‌پذیری نیز می‌توانید ویژگی‌های زیر را تنظیم کنید:
+Accessibility labels can also be customized:
 
 ```html
 <cap-widget
@@ -218,33 +222,33 @@ public/
 ></cap-widget>
 ```
 
-تعداد Worker را یک عدد صحیح مثبت و حداکثر برابر `Math.min(navigator.hardwareConcurrency || 8, 16)` انتخاب کنید. مقدار نامعتبر باعث استفاده از مقدار پیش‌فرض می‌شود.
+Choose a positive integer worker count no greater than `Math.min(navigator.hardwareConcurrency || 8, 16)`. Invalid values use the default worker count.
 
-## متدها و رویدادها
+## Methods and events
 
-| API روی ویجت | کاربرد |
+| Widget API | Description |
 | --- | --- |
-| `await widget.solve()` | حل چالش؛ در موفقیت `{ success: true, token }` برمی‌گرداند |
-| `widget.reset()` | پاک‌کردن توکن و بازگرداندن حالت اولیه |
-| `widget.setWorkersCount(2)` | تنظیم تعداد Workerها |
-| `widget.token` / `widget.tokenValue` | توکن فعلی یا `null` |
+| `await widget.solve()` | Solve a challenge; returns `{ success: true, token }` on success |
+| `widget.reset()` | Clear the token and restore the initial state |
+| `widget.setWorkersCount(2)` | Configure the worker count |
+| `widget.token` / `widget.tokenValue` | Current token or `null` |
 
-اگر حل چالش از قبل در حال اجرا باشد، فراخوانی مجدد `solve()` نتیجه‌ای برنمی‌گرداند. خطای حل چالش Promise را reject می‌کند؛ برای اجرای برنامه‌ای از `try/catch` استفاده کنید.
+Calling `solve()` while a solve is already running returns no result. Solver errors reject the Promise; use `try/catch` for programmatic verification.
 
-| رویداد | `event.detail` |
+| Event | `event.detail` |
 | --- | --- |
-| `progress` | `{ progress: number }`، درصد پیشرفت |
+| `progress` | `{ progress: number }`, expressed as a percentage |
 | `solve` | `{ token: string }` |
 | `error` | `{ isCap: true, message: string }` |
 | `reset` | `{}` |
 
 ```js
 widget.addEventListener("progress", ({ detail }) => {
-  console.log(`پیشرفت: ${detail.progress}%`);
+  console.log(`Progress: ${detail.progress}%`);
 });
 
 widget.addEventListener("solve", ({ detail }) => {
-  console.log("توکن آماده است:", detail.token);
+  console.log("Verification token:", detail.token);
 });
 
 widget.addEventListener("error", ({ detail }) => {
@@ -252,11 +256,11 @@ widget.addEventListener("error", ({ detail }) => {
 });
 ```
 
-در callback رویداد `solve`، توکن را از `event.detail.token` بخوانید؛ این رویداد پیش از به‌روزرسانی پراپرتی `widget.token` ارسال می‌شود. کلاس `window.Cap` نیز `solve()`، `reset()`، `addEventListener()`، `token` و دسترسی به ویجت از طریق `cap.widget` را ارائه می‌کند.
+Read the token from `event.detail.token` inside a `solve` callback: the event fires before `widget.token` is updated. The `window.Cap` class also exposes `solve()`, `reset()`, `addEventListener()`, `token`, and the underlying widget through `cap.widget`.
 
-## شخصی‌سازی ظاهر
+## Styling
 
-متغیرهای CSS از بیرون Shadow DOM قابل تنظیم هستند:
+Customize the widget through CSS variables inherited by its Shadow DOM:
 
 ```css
 cap-widget {
@@ -278,11 +282,11 @@ cap-widget::part(label) {
 }
 ```
 
-فونت مثال باید جداگانه در پروژه بارگذاری شود. بخش‌های `checkbox`، `label` و `attribution` با `::part()` قابل هدف‌گیری هستند. متغیرهای دیگری مانند `--cap-checkbox-size`، `--cap-checkbox-border` و `--cap-spinner-thickness` نیز در دسترس‌اند.
+Load the example font separately in your application. The `checkbox`, `label`, and `attribution` parts can be targeted with `::part()`. Additional variables include `--cap-checkbox-size`, `--cap-checkbox-border`, and `--cap-spinner-thickness`.
 
-## مسیر سفارشی WASM و Fetch
+## Custom WASM location and fetch behavior
 
-تنظیمات سراسری را **پیش از اجرای فایل ویجت** تعریف کنید:
+Set global configuration **before executing the widget script**:
 
 ```html
 <script type="module">
@@ -295,9 +299,9 @@ cap-widget::part(label) {
 </script>
 ```
 
-`CAP_CUSTOM_WASM_URL` باید به فایل **JavaScript راه‌انداز WASM** اشاره کند، نه فایل `.wasm`. فایل `cap_wasm_bg.wasm` را کنار آن نگه دارید. استفاده از URL مطلق، مسیر واردکردن ماژول در Worker را روشن می‌کند.
+`CAP_CUSTOM_WASM_URL` must point to the **JavaScript WASM loader**, not the `.wasm` binary. Keep `cap_wasm_bg.wasm` beside that loader. An absolute URL makes the worker's module import location explicit.
 
-برای تغییر رفتار درخواست‌های API:
+To customize API requests:
 
 ```js
 window.CAP_CUSTOM_FETCH = (url, options) =>
@@ -306,43 +310,43 @@ window.CAP_CUSTOM_FETCH = (url, options) =>
 await import("/vendor/cap/cap.min.js");
 ```
 
-این hook درخواست‌های challenge و redeem را تغییر می‌دهد؛ بارگذاری داخلی WASM از آن استفاده نمی‌کند. برای style داخلی ویجت نیز `window.CAP_CSS_NONCE` قابل تنظیم است.
+This hook handles challenge and redeem requests; internal WASM loading does not use it. You can also set `window.CAP_CSS_NONCE` to apply a nonce to the widget's internal style element.
 
-## فایل‌های پکیج
+## Package files
 
-| فایل | کاربرد |
+| File | Purpose |
 | --- | --- |
-| `cap.min.js` | نسخهٔ اصلی فارسی و RTL با مسیرهای نسبی WASM؛ بارگذاری به‌صورت module |
-| `wasm/cap_wasm.min.js` | ماژول راه‌انداز حل‌کنندهٔ WASM |
-| `wasm/cap_wasm_bg.wasm` | باینری WebAssembly |
-| `cap.d.ts` | تعریف نوع‌های TypeScript |
-| `cap-floating.min.js` | افزونهٔ نمایش شناور ویجت |
-| `cap.compat.min.js` | نسخهٔ جداگانه با رفتار متفاوت؛ در حالت پیش‌فرض به CDN ارجاع می‌دهد |
-| `src/` | فایل‌های منبع؛ رفتار آن‌ها در همهٔ جزئیات با فایل اصلی یکسان نیست |
+| `cap.min.js` | Main Persian/RTL build with relative WASM URLs; load as a module |
+| `wasm/cap_wasm.min.js` | WASM solver loader module |
+| `wasm/cap_wasm_bg.wasm` | WebAssembly binary |
+| `cap.d.ts` | TypeScript declarations |
+| `cap-floating.min.js` | Floating widget extension |
+| `cap.compat.min.js` | Separate build with different behavior; references a CDN by default |
+| `src/` | Source files; their behavior differs from the main build in some details |
 
-برای استقرار محلی مستندشده، از `cap.min.js` و پوشهٔ `wasm/` استفاده کنید. فایل `cap.compat.min.js` را جایگزین هم‌ارز نسخهٔ اصلی در نظر نگیرید.
+Use `cap.min.js` and the `wasm/` directory for the documented local deployment. Treat `cap.compat.min.js` as a separate build rather than an equivalent replacement for the main build.
 
-## رفع مشکلات رایج
+## Troubleshooting
 
-| مشکل | بررسی پیشنهادی |
+| Problem | What to check |
 | --- | --- |
-| خطای `import.meta` | فایل اصلی را با `type="module"` یا `import()` در مرورگر بارگذاری کنید |
-| خطای 404 برای WASM | ساختار پوشه‌ها و URL عمومی دو فایل WASM را بررسی کنید |
-| ردشدن ماژول به علت MIME type | فایل JS را با MIME مناسب JavaScript و فایل WASM را با `application/wasm` سرو کنید |
-| پیام `Missing API endpoint` | آدرس API را در ویژگی ویجت یا `apiEndpoint` سازنده تنظیم کنید |
-| پیام `Invalid solution` | سازگاری سرور، پاسخ challenge و نتیجهٔ redeem را بررسی کنید |
-| پیام `Invalid expiration time` | زمان سرور و مقدار آیندهٔ `expires` در پاسخ redeem را بررسی کنید |
-| حل چالش کند است | Network و Console را برای خطای بارگذاری WASM و فعال‌شدن fallback بررسی کنید |
-| Worker با CSP مسدود می‌شود | سیاست `worker-src` باید ساخت Worker از `blob:` را مجاز کند؛ بارگذاری JS، WASM، درخواست‌های API و style داخلی را هم با سیاست پروژه هماهنگ کنید |
+| `import.meta` syntax error | Load the main file with `type="module"` or browser `import()` |
+| WASM assets return 404 | Check the directory structure and public URLs of both WASM assets |
+| Module rejected due to MIME type | Serve JS with an appropriate JavaScript MIME type and WASM with `application/wasm` |
+| `Missing API endpoint` | Configure the widget attribute or constructor's `apiEndpoint` |
+| `Invalid solution` | Check server compatibility, the challenge response, and the redeem result |
+| `Invalid expiration time` | Check the server clock and the future `expires` value in the redeem response |
+| Slow challenge solving | Inspect Network and Console for WASM loading failures and fallback activation |
+| CSP blocks workers | Allow `blob:` workers in `worker-src`; also configure the application's policy for JS, WASM, API requests, and internal styles |
 
-از HTTPS یا localhost استفاده کنید؛ حل‌کنندهٔ جایگزین به Web Crypto نیاز دارد. فایل‌ها را از وب‌سرور سرو کنید، نه با بازکردن مستقیم `file://`. این ویجت برای مرورگر است و باید در پروژه‌های دارای SSR، در سمت کلاینت بارگذاری شود.
+Use HTTPS or localhost; the fallback solver requires Web Crypto. Serve the assets through a web server rather than opening them with `file://`. The widget runs in the browser and must be loaded on the client in applications with server-side rendering.
 
-## مشارکت و پشتیبانی
+## Contributing and support
 
-برای گزارش خطا یا پیشنهاد قابلیت، یک [Issue](https://github.com/mohammadim48/capjs-local-persian/issues) باز کنید. نسخهٔ پکیج، مرورگر، مراحل بازتولید و پیام خطا را بنویسید؛ توکن‌ها و اطلاعات حساس را از گزارش حذف کنید.
+Found a bug or have a feature suggestion? [Open an issue](https://github.com/mohammadim48/capjs-local-persian/issues) with the package version, browser, reproduction steps, and error message. Remove tokens and sensitive information from your report.
 
-## مجوز و قدردانی
+## License and credits
 
-این پروژه با مجوز [Apache-2.0](./LICENSE) منتشر شده است.
+Released under the [Apache-2.0 license](./LICENSE).
 
-بر پایهٔ [Cap](https://github.com/tiagozip/cap)، ساختهٔ **Tiago**؛ نگهداری این فورک توسط [Mohammadim48](https://github.com/mohammadim48). حقوق و مجوز اثر اصلی مطابق فایل LICENSE حفظ شده است.
+Based on [Cap](https://github.com/tiagozip/cap), created by **Tiago**. This fork is maintained by [Mohammadim48](https://github.com/mohammadim48). The original copyright and license are retained in the LICENSE file.
